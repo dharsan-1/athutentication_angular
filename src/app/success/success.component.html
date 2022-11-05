@@ -1,0 +1,19 @@
+<div>
+    <form [formGroup] ="formsGrp" (ngSubmit)="onAddStudent()">
+        <mat-form-field appearance="fill" style="background-color: grey;">
+            <mat-label>user Firstname</mat-label>
+            <input matInput formControlName="userFirstName">
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="background-color: grey;">
+            <mat-label>user Lastname</mat-label>
+            <input matInput type="password" formControlName="userLastName">
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="background-color: grey;">
+            <mat-label>user Mobile No</mat-label>
+            <input matInput type="number" formControlName="userMobileNo">
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="Primary">save</button>
+    </form>
+    <button mat-raised-button color="primary" (click)="onLogOut()">Log out</button>
+    <button mat-raised-button color="secondary" routerLink="/show">View your Data</button>
+</div>

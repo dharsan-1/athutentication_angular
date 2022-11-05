@@ -1,0 +1,35 @@
+<!--base_div-->
+<div class="base_div">
+    <!--section 1-->
+    <section class="section_1">
+        <div class="container">
+            <h1>login page</h1>
+            <form [formGroup] ="formsGrp" (ngSubmit)="onLogin()">
+                <mat-form-field appearance="fill" style="background-color: grey;">
+                    <mat-label>user Email</mat-label>
+                    <input matInput formControlName="userEmail">
+                </mat-form-field>
+                <mat-form-field appearance="fill" style="background-color: grey;">
+                    <mat-label>user password</mat-label>
+                    <input matInput type="password" formControlName="password">
+                </mat-form-field>
+                <button type="submit">logIn</button>
+            </form>
+        </div>
+    </section>
+    <section>
+        <h3>{{error_msg}}</h3>
+    </section>
+    <section class="section_1">
+        <button mat-raised-button color="orange" routerLink="/SignUp">Sign Up page</button>
+    </section>
+    <section class="section_1">
+        <button mat-raised-button color="orange" routerLink="/ForgertPass">Forget password</button>
+    </section>
+    <section class="section_1">
+        <div class="plain_div">
+            <div><img src="../../assets/images/google.png" class="img"/></div>
+            <div><h3 (click)="signInWithGoogle()" class="styleHead">Sign in with google</h3></div>
+        </div>
+    </section>
+</div>

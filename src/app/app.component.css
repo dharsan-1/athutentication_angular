@@ -1,0 +1,21 @@
+/*common CSS*/
+body{
+    margin:0px;
+    padding: 0px;
+}
+.container{
+    max-width: 1140px;
+    margin: 0 auto;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.base_div{
+    background-color: grey;
+    background-size: cover;
+    padding: 30px;
+}
+.section_1{
+    padding-top: 40px;
+}
