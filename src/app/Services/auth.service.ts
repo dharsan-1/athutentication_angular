@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/compat/auth'
-import { Router } from '@angular/router';
+import {Router} from '@angular/router'
 import {GoogleAuthProvider} from '@angular/fire/auth'
 import "firebase/auth"
 
@@ -15,7 +15,12 @@ export class AuthService {
   loginUser(email:any,passowrd:any){
     this.fireAuth.signInWithEmailAndPassword(email,passowrd).then(res => {
       localStorage.setItem("token","true")
-      this.routing.navigateByUrl("/success")
+      if(res.user?.emailVerified == true){
+        this.routing.navigateByUrl("/success")
+      }
+      else{
+        alert("please register your email")
+      }
     },err => {
       alert(err.message)
       this.routing.navigateByUrl("/")
@@ -24,7 +29,7 @@ export class AuthService {
   regsterUser(email:any,passowrd:any){
     this.fireAuth.createUserWithEmailAndPassword(email,passowrd).then(res => {
       alert("Registraion success")
-      this.routing.navigateByUrl("/")
+      this.verifyPasMail(res.user)
     },err =>{
       alert(err.message)
       this.routing.navigateByUrl("/SignUp")
@@ -53,6 +58,13 @@ export class AuthService {
       localStorage.setItem("Token",JSON.stringify(res.user?.uid))
     },err => {
       alert("Something is wrong")
+    })
+  }
+  verifyPasMail(user:any){
+    user.sendEmailVerification().then((res:any) =>{
+      this.routing.navigateByUrl("/Verfication")
+    },(Err:any) => {
+      alert(Err.message)
     })
   }
 }
